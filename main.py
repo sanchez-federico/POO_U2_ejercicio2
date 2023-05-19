@@ -1,0 +1,43 @@
+"""
+Universidad Nacional de San Juan
+Facultad de Ciencias Exactas, Fisicas y Naturales
+
+Asignatura: Programacion Orientada a Objetos
+
+Autor: Federico Gabriel Sanchez
+Legajo: EO14-53   Esp: TUPW
+
+Unidad 2 - Ejercicio 2
+"""
+import os
+from clase_ViajeroFrecuente import manejadorViajero
+from clase_ViajeroFrecuente import ViajeroFrecuente
+
+if __name__== '__main__':
+
+    lista = manejadorViajero()
+    lista.testViajero()
+    k = input('Ingrese numero de viajero: ')
+    n = lista.buscaViajero(k)
+    os.system('cls')
+
+    opc = None
+    if(n == None):
+        print("El numero de viajero no existe.")
+    else:
+        while(opc != '0'):
+            opc = input('''--Menu--
+            1) Consultar cantidad de millas
+            2) Acumular Millas
+            3) Canjear millas
+            0) Terminar con el programa
+            ''')
+            if opc == '1':
+                print("La cantidad total de millas es: ",lista.getMillas(n))
+            elif opc == '2':
+                nuevas_millas = int(input('Ingrese la cantidad de millas nuevas: '))
+                print("Su total de millas es: ",lista.acumularMillas(nuevas_millas,n))
+            elif opc == '3':
+                cant = int(input('Ingrese cantidad de millas a canjear: '))
+                lista.canjearMillas(cant,n)
+        print("Fin")
